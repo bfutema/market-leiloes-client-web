@@ -46,6 +46,7 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'react-hooks/rules-of-hooks': 'off',
     'react-hooks/exhaustive-deps': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
   settings: {
     'import/resolver': {
