@@ -15,7 +15,7 @@ export default function Routes() {
       <Route path="/register" component={SignUp} />
       <Route path="/login" component={SignIn} />
 
-      <Route path="/" component={() => <h1>404</h1>} />
+      {/* <Route path="/" component={() => <h1>404</h1>} /> */}
     </Switch>
   );
 }

@@ -4,6 +4,13 @@ export const Container = styled.header`
   background: #fff;
   padding: 0 30px;
   box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+
+  z-index: 1000;
 `;
 
 export const Content = styled.div`
@@ -67,22 +74,24 @@ export const FormContent = styled.div`
   }
 `;
 
-export const LoginFormContent = styled.div`
+export const LoginContent = styled.div`
   position: relative;
 
   display: flex;
   align-items: center;
-`;
 
-export const Button = styled.button`
-  color: var(--p-color);
-  font-size: 18px;
-  font-weight: bold;
+  a {
+    color: var(--p-color);
+    font-family: 'Roboto';
+    font-size: 16px;
+    font-weight: bold;
+    /* text-transform: uppercase; */
 
-  position: absolute;
-  right: 5px;
+    position: absolute;
+    right: 5px;
 
-  &:hover {
-    filter: brightness(90%);
+    &:hover {
+      filter: brightness(90%);
+    }
   }
 `;

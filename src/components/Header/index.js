@@ -4,13 +4,7 @@ import { FiSearch } from 'react-icons/fi';
 
 import logo from '~/assets/logo-light.svg';
 
-import {
-  Button,
-  Container,
-  Content,
-  FormContent,
-  LoginFormContent,
-} from './styles';
+import { Container, Content, FormContent, LoginContent } from './styles';
 
 export default function Header() {
   return (
@@ -30,11 +24,9 @@ export default function Header() {
           </FormContent>
         </form>
         <aside>
-          <form action="">
-            <LoginFormContent>
-              <Button>Login</Button>
-            </LoginFormContent>
-          </form>
+          <LoginContent>
+            <Link to="/login">Login</Link>
+          </LoginContent>
         </aside>
       </Content>
     </Container>

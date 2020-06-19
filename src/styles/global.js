@@ -1,15 +1,14 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Roboto:wght@400;700&display=swap');
-
   :root {
     --p-color: #F04E7F;
     --s-color: #373435;
     --t-color: #4BB7EB;
     --f-color: #707070;
+    --purple-color: #7159C1;
     --background-color: #F0F0F0;
-    --max-width: 1200px;
+    --max-width: 1440px;
   }
 
   * {
@@ -33,11 +32,15 @@ export default createGlobalStyle`
   }
 
   body, input, button {
-    font: 14px 'Roboto', 'Nunito', sans-serif;
+    font: 14px 'Nunito', 'Roboto', sans-serif;
+  }
+
+  input[type="date"], select {
+    height: 37px;
   }
 
   a {
-    text-decoration: none;
+    text-decoration: none !important;
   }
 
   ul {
