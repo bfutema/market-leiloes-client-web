@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './config/ReactotronConfig';
 
 import Header from '~/components/Header';
+import Footer from '~/components/Footer';
 
 import Routes from './routes';
 import history from './services/history';
@@ -16,6 +17,7 @@ function App() {
     <Router history={history}>
       <Header />
       <Routes />
+      <Footer />
       <GlobalStyle />
       <ResponsiveStyle />
     </Router>
