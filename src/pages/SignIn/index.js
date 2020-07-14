@@ -1,27 +1,44 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Form, Input } from '@rocketseat/unform';
+import * as Yup from 'yup';
+
+import { signInRequest } from '~/store/modules/auth/actions';
 
 import { Container, Content, Button, NavigationContent } from './styles';
 
-export default function index() {
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .email('Insira um e-mail válido')
+    .required('O e-mail é obrigatório'),
+  password: Yup.string().required('Digite sua senha'),
+});
+
+export default function SignIn() {
+  const dispatch = useDispatch();
+
+  function handleSubmit({ email, password }) {
+    dispatch(signInRequest(email, password));
+  }
+
   return (
     <Container>
       <h1>Já tenho uma conta</h1>
-      <form>
+      <Form schema={schema} onSubmit={handleSubmit}>
         <Content>
           <div className="item">
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
+            <label htmlFor="email">Email</label>
+            <Input
+              id="email"
               type="text"
-              name="username"
-              placeholder="Nome de usuário ou CPF/CNPJ"
-              autoComplete="none"
+              name="email"
+              placeholder="Seu email"
             />
           </div>
           <div className="item">
             <label htmlFor="password">Senha</label>
-            <input
+            <Input
               id="password"
               type="password"
               name="password"
@@ -30,7 +47,7 @@ export default function index() {
           </div>
           <Button type="submit">Login</Button>
         </Content>
-      </form>
+      </Form>
       <hr />
       <NavigationContent>
         <div>
