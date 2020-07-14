@@ -23,7 +23,7 @@ function SignUp() {
 
   return (
     <Container>
-      <h1>Inscreva sua conta de usuário</h1>
+      <h1>Criar sua conta de usuário</h1>
       <p>Preencha todos os campos do formulário para ir para a próxima etapa</p>
       <Content fieldsetActive={currentStep}>
         <Steps id="progressbar">
