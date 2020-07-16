@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
+import Ink from 'react-ink';
 import * as Yup from 'yup';
 
 import { signInRequest } from '~/store/modules/auth/actions';
@@ -45,18 +46,27 @@ export default function SignIn() {
               placeholder="Sua senha secreta"
             />
           </div>
-          <Button type="submit">Login</Button>
+          <Button type="submit">
+            <Ink />
+            Login
+          </Button>
         </Content>
       </Form>
       <hr />
       <NavigationContent>
         <div>
           <span>Ainda não sou cadastrado</span>
-          <Link to="/register">Criar uma conta</Link>
+          <Link to="/register">
+            <Ink />
+            Criar uma conta
+          </Link>
         </div>
         <div>
           <span>Não consigo acessar minha conta</span>
-          <Link to="/">Esqueci minha senha</Link>
+          <Link to="/">
+            <Ink />
+            Esqueci minha senha
+          </Link>
         </div>
       </NavigationContent>
     </Container>

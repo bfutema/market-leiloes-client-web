@@ -86,6 +86,8 @@ export const Button = styled.button`
   padding: 4px;
   margin: 5px 0;
 
+  position: relative;
+
   &:hover {
     filter: brightness(90%);
   }
@@ -134,6 +136,8 @@ export const NavigationContent = styled.div`
 
       padding: 4px;
       margin: 5px 0;
+
+      position: relative;
 
       &:hover {
         filter: brightness(90%);

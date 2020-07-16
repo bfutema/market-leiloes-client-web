@@ -5,7 +5,7 @@ import banner from '~/assets/banner.png';
 import Card from '~/components/Card';
 import { Container, Banner, Spheres, Sphere, ImportantBar } from './styles';
 
-export default function index() {
+export default function Home() {
   return (
     <>
       <Container className="main-container">

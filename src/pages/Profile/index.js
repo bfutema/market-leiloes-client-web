@@ -1,5 +1,11 @@
 import React from 'react';
 
-export default function index() {
-  return <h1>Profile</h1>;
+import { Container } from './styles';
+
+export default function Profile() {
+  return (
+    <Container>
+      <h1>Profile</h1>
+    </Container>
+  );
 }

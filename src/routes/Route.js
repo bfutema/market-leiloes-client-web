@@ -6,7 +6,8 @@ import { store } from '~/store';
 
 export default function RouteWrapper({
   component: Component,
-  isPrivate = false,
+  isPrivate,
+  auth,
   ...rest
 }) {
   const { signed } = store.getState().auth;
@@ -15,7 +16,7 @@ export default function RouteWrapper({
     return <Redirect to="/login" />;
   }
 
-  if (signed && !isPrivate) {
+  if (signed && !isPrivate && auth) {
     return <Redirect to="/" />;
   }
 
@@ -24,10 +25,12 @@ export default function RouteWrapper({
 
 RouteWrapper.defaultProps = {
   isPrivate: false,
+  auth: false,
 };
 
 RouteWrapper.propTypes = {
   isPrivate: PropTypes.bool,
+  auth: PropTypes.bool,
   component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
     .isRequired,
 };

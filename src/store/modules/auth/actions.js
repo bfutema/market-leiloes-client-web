@@ -1,4 +1,9 @@
-import { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_FAILURE } from './constants';
+import {
+  SIGN_IN_REQUEST,
+  SIGN_IN_SUCCESS,
+  SIGN_FAILURE,
+  SIGN_OUT,
+} from './constants';
 
 export function signInRequest(email, password) {
   return {
@@ -17,5 +22,11 @@ export function signInSuccess(token, user) {
 export function signFailure() {
   return {
     type: SIGN_FAILURE,
+  };
+}
+
+export function signOut() {
+  return {
+    type: SIGN_OUT,
   };
 }

@@ -19,7 +19,7 @@ export const Content = styled.div`
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 280px 1fr 280px;
+  grid-template-columns: 300px 1fr 1fr;
   align-items: center;
 
   nav {
@@ -85,13 +85,74 @@ export const LoginContent = styled.div`
     font-family: 'Roboto';
     font-size: 16px;
     font-weight: bold;
-    /* text-transform: uppercase; */
 
     position: absolute;
     right: 5px;
 
     &:hover {
       filter: brightness(90%);
+    }
+  }
+`;
+
+export const User = styled.div`
+  cursor: pointer;
+
+  display: flex;
+  justify-content: flex-start;
+
+  > div:nth-of-type(1) {
+    width: 36px;
+    height: 36px;
+
+    border: 1px solid #222;
+    border-radius: 50%;
+
+    margin-right: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: #f0f0f0cc;
+    }
+  }
+
+  > div:nth-of-type(2) {
+    white-space: nowrap;
+
+    margin-left: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    span {
+      color: #777;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    strong {
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+`;
+
+export const UserLoggedContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  > button {
+    cursor: pointer;
+
+    margin-left: 32px;
+
+    &:hover svg {
+      filter: brightness(60%);
     }
   }
 `;
