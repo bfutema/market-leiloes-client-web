@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Container, Content, Steps, ProgressBar } from './styles';
 
-import StepOne from './StepOne';
-import StepTwo from './StepTwo';
-import StepThree from './StepThree';
-import StepFour from './StepFour';
+import StepOne from './1StepOne';
+import StepTwo from './2StepTwo';
+import StepThree from './3StepThree';
+import StepFour from './4StepFour';
 
 function SignUp() {
+  const newUser = useSelector((state) => state.user.newUser);
+
   const [progressBar, setProgressBar] = useState(25);
   const [currentStep, setCurrentFs] = useState(1);
 
@@ -57,7 +60,12 @@ function SignUp() {
           <StepTwo handlePrev={handlePrev} handleNext={handleNext} />
         </fieldset>
         <fieldset className={currentStep === 3 ? 'active' : 'hide'}>
-          <StepThree handlePrev={handlePrev} handleNext={handleNext} />
+          <StepThree
+            avatar={newUser && newUser.avatar}
+            documents={newUser && newUser.documents}
+            handlePrev={handlePrev}
+            handleNext={handleNext}
+          />
         </fieldset>
         {currentStep === 4 && (
           <fieldset>

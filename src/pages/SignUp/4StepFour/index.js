@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Lottie from 'react-lottie';
 import animationData from '~/assets/433-checked-done.json';
+
+import { signUpRequest } from '~/store/modules/auth/actions';
 
 import { Title, Messages, Message } from '../styles';
 
 export default function StepFour() {
+  const dispatch = useDispatch();
+
+  const newUser = useSelector((state) => state.user.newUser);
+
+  useEffect(() => {
+    dispatch(signUpRequest(newUser));
+  }, [dispatch, newUser]);
+
   return (
     <>
       <Title>

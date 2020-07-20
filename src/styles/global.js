@@ -1,5 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
+import 'react-circular-progressbar/dist/styles.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default createGlobalStyle`
   :root {
     --p-color: #F04E7F;
@@ -53,5 +56,9 @@ export default createGlobalStyle`
     background: none;
     border: none;
     cursor: pointer;
+  }
+
+  fieldset {
+    border: none !important;
   }
 `;
