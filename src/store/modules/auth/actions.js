@@ -1,6 +1,8 @@
 import {
   SIGN_IN_REQUEST,
   SIGN_IN_SUCCESS,
+  SIGN_UP_REQUEST,
+  SIGN_UP_SUCCESS,
   SIGN_FAILURE,
   SIGN_OUT,
 } from './constants';
@@ -16,6 +18,19 @@ export function signInSuccess(token, user) {
   return {
     type: SIGN_IN_SUCCESS,
     payload: { token, user },
+  };
+}
+
+export function signUpRequest(newUser) {
+  return {
+    type: SIGN_UP_REQUEST,
+    payload: { ...newUser },
+  };
+}
+
+export function signUpSuccess() {
+  return {
+    type: SIGN_UP_SUCCESS,
   };
 }
 

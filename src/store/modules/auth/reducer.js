@@ -1,6 +1,12 @@
 import produce from 'immer';
 
-import { SIGN_IN_REQUEST, SIGN_IN_SUCCESS, SIGN_OUT } from './constants';
+import {
+  SIGN_IN_REQUEST,
+  SIGN_IN_SUCCESS,
+  SIGN_UP_REQUEST,
+  SIGN_UP_SUCCESS,
+  SIGN_OUT,
+} from './constants';
 
 const INITIAL_STATE = {
   token: null,
@@ -20,6 +26,16 @@ export default function auth(state = INITIAL_STATE, action) {
         draft.loading = false;
         draft.token = action.payload.token;
         draft.signed = true;
+        break;
+      }
+
+      case SIGN_UP_REQUEST: {
+        draft.loading = true;
+        break;
+      }
+
+      case SIGN_UP_SUCCESS: {
+        draft.loading = false;
         break;
       }
 
