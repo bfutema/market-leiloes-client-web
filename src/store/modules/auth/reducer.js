@@ -5,6 +5,7 @@ import {
   SIGN_IN_SUCCESS,
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
+  SIGN_UP_FAILURE,
   SIGN_OUT,
 } from './constants';
 
@@ -12,6 +13,7 @@ const INITIAL_STATE = {
   token: null,
   signed: false,
   loading: false,
+  error: false,
 };
 
 export default function auth(state = INITIAL_STATE, action) {
@@ -31,11 +33,19 @@ export default function auth(state = INITIAL_STATE, action) {
 
       case SIGN_UP_REQUEST: {
         draft.loading = true;
+        draft.error = false;
         break;
       }
 
       case SIGN_UP_SUCCESS: {
         draft.loading = false;
+        draft.error = false;
+        break;
+      }
+
+      case SIGN_UP_FAILURE: {
+        draft.loading = false;
+        draft.error = true;
         break;
       }
 

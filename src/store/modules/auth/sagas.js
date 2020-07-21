@@ -1,7 +1,7 @@
 import { all, takeLatest, call, put, delay } from 'redux-saga/effects';
 
 import { SIGN_IN_REQUEST, SIGN_UP_REQUEST, SIGN_OUT } from './constants';
-import { signInSuccess, signUpSuccess, signFailure } from './actions';
+import { signInSuccess, signUpSuccess, signUpFailure } from './actions';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -32,11 +32,13 @@ export function* signUp({ payload }) {
       confirmPassword,
       name,
       surname,
-      cpfCnpj,
+      cpfCnpj: cpf_cnpj,
       birth,
       rg,
       gender,
     } = payload;
+
+    yield delay(1000);
 
     yield call(api.post, 'users', {
       username,
@@ -45,17 +47,15 @@ export function* signUp({ payload }) {
       confirmPassword,
       name,
       surname,
-      cpfCnpj,
+      cpf_cnpj: cpf_cnpj.replace(/\D/g, ''),
       birth,
-      rg,
+      rg: rg.replace(/\D/g, ''),
       gender,
     });
 
-    yield delay(1000);
-
     yield put(signUpSuccess());
   } catch (err) {
-    yield put(signFailure());
+    yield put(signUpFailure());
   }
 }
 

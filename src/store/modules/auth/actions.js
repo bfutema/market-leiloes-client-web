@@ -3,6 +3,7 @@ import {
   SIGN_IN_SUCCESS,
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
+  SIGN_UP_FAILURE,
   SIGN_FAILURE,
   SIGN_OUT,
 } from './constants';
@@ -31,6 +32,12 @@ export function signUpRequest(newUser) {
 export function signUpSuccess() {
   return {
     type: SIGN_UP_SUCCESS,
+  };
+}
+
+export function signUpFailure() {
+  return {
+    type: SIGN_UP_FAILURE,
   };
 }
 
