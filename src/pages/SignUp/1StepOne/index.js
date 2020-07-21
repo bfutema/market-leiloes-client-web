@@ -83,6 +83,7 @@ export default function StepOne({ handleNext }) {
               name="password"
               placeholder="Escolha uma senha secreta"
               tabIndex="3"
+              pattern={onlyChars}
             />
           </Item>
         </LeftItems>
@@ -106,6 +107,7 @@ export default function StepOne({ handleNext }) {
               name="confirmPassword"
               placeholder="Confirme sua senha"
               tabIndex="4"
+              pattern={onlyChars}
             />
           </Item>
         </RightItems>
