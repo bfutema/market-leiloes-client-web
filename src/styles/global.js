@@ -11,7 +11,7 @@ export default createGlobalStyle`
     --f-color: #707070;
     --purple-color: #7159C1;
     --background-color: #F0F0F0;
-    --max-width: 1440px;
+    --max-width: 1540px;
   }
 
   * {
