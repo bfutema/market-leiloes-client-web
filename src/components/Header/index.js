@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -51,12 +52,22 @@ export default function Header() {
                 </div>
                 <div>
                   <div>
-                    <span>Login: </span>
-                    <strong>{profile.username}</strong>
+                    <span>E-mail: </span>
+                    <strong>{profile.email}</strong>
                   </div>
                   <div>
-                    <span>Email: </span>
-                    <strong>{profile.email}</strong>
+                    <span>Status: </span>
+                    <strong>
+                      {profile.status_id === 1
+                        ? 'Em Análise'
+                        : profile.status_id === 2
+                        ? 'Aprovado'
+                        : profile.status_id === 3
+                        ? 'Reprovado'
+                        : profile.status_id === 4
+                        ? 'Ativo'
+                        : 'Desativo'}
+                    </strong>
                   </div>
                 </div>
               </User>
