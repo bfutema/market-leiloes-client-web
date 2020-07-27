@@ -1,34 +1,56 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Form, Input } from '@rocketseat/unform';
 import Ink from 'react-ink';
 import * as Yup from 'yup';
 
+import { Form } from '@unform/web';
 import { signInRequest } from '~/store/modules/auth/actions';
 
-import { Container, Content, Button, NavigationContent } from './styles';
+import { Input } from '~/components/Form';
 
-const schema = Yup.object().shape({
-  email: Yup.string()
-    .email('Insira um e-mail válido')
-    .required('O e-mail é obrigatório'),
-  password: Yup.string().required('Digite sua senha'),
-});
+import { Container, Content, Button, NavigationContent } from './styles';
 
 export default function SignIn() {
   const dispatch = useDispatch();
 
-  function handleSubmit({ email, password }) {
-    dispatch(signInRequest(email, password));
+  const formRef = useRef(null);
+
+  async function handleSubmit(data) {
+    try {
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .email('Insira um e-mail válido')
+          .required('O e-mail é obrigatório'),
+        password: Yup.string().required('Digite sua senha'),
+      });
+
+      await schema.validate(data, { abortEarly: false });
+
+      formRef.current.setErrors({});
+
+      const { email, password } = data;
+
+      dispatch(signInRequest(email, password));
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errorMessages = {};
+
+        err.inner.forEach((error) => {
+          errorMessages[error.path] = error.message;
+        });
+
+        formRef.current.setErrors(errorMessages);
+      }
+    }
   }
 
   return (
     <Container>
       <h1>Já tenho uma conta</h1>
-      <Form schema={schema} onSubmit={handleSubmit}>
+      <Form ref={formRef} onSubmit={handleSubmit}>
         <Content>
-          <div className="item">
+          <div>
             <label htmlFor="email">Email</label>
             <Input
               id="email"
@@ -37,7 +59,7 @@ export default function SignIn() {
               placeholder="Seu email"
             />
           </div>
-          <div className="item">
+          <div>
             <label htmlFor="password">Senha</label>
             <Input
               id="password"
@@ -63,7 +85,7 @@ export default function SignIn() {
         </div>
         <div>
           <span>Não consigo acessar minha conta</span>
-          <Link to="/">
+          <Link to="/forgot_password">
             <Ink />
             Esqueci minha senha
           </Link>

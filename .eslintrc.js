@@ -51,6 +51,7 @@ module.exports = {
     'jsx-a11y/tabindex-no-positive': 'off',
     'radix': 'off',
     'react/forbid-prop-types': 'off',
+    'consistent-return': 'off',
   },
   settings: {
     'import/resolver': {

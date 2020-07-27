@@ -30,9 +30,11 @@ export const Content = styled.div`
 
   margin: 16px auto;
 
-  .item {
+  > div {
     display: flex;
     flex-direction: column;
+
+    position: relative;
 
     margin: 25px 0;
 
@@ -41,14 +43,6 @@ export const Content = styled.div`
       font-size: 14px;
       font-weight: bold;
       margin-bottom: 5px;
-    }
-
-    input {
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      box-shadow: inset 0 0 2px -1px #000;
-
-      padding: 8px 4px;
     }
 
     &:hover label {
