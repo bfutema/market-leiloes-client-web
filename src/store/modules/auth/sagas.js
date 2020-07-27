@@ -1,7 +1,21 @@
 import { all, takeLatest, call, put, delay } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 
-import { SIGN_IN_REQUEST, SIGN_UP_REQUEST, SIGN_OUT } from './constants';
-import { signInSuccess, signUpSuccess, signUpFailure } from './actions';
+import {
+  SIGN_IN_REQUEST,
+  SIGN_UP_REQUEST,
+  SIGN_OUT,
+  SIGN_UP_FAILURE_DEL_FILES,
+  FORGOT_PASSWORD_REQUEST,
+} from './constants';
+import {
+  signInSuccess,
+  signUpSuccess,
+  signUpFailure,
+  deleteFilesInFailureRequest,
+  forgotPasswordSuccess,
+} from './actions';
+import { deleteFilesInUnmountSuccess } from '../user/actions';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -24,6 +38,13 @@ export function* signIn({ payload }) {
 }
 
 export function* signUp({ payload }) {
+  const { callback, avatar, documents } = payload;
+
+  const documents_ids =
+    (!avatar && documents) || (avatar && documents)
+      ? documents.map((document) => document.id)
+      : [];
+
   try {
     const {
       username,
@@ -51,16 +72,65 @@ export function* signUp({ payload }) {
       birth,
       rg: rg.replace(/\D/g, ''),
       gender,
+      avatar_id: avatar && avatar.id,
+      documents_ids,
     });
+
+    toast.info('Cadastro enviado com sucesso.');
 
     yield put(signUpSuccess());
   } catch (err) {
+    if (documents_ids.length > 0) {
+      const ids = [];
+
+      ids.push(avatar.id);
+      documents_ids.map((id) => ids.push(id));
+
+      yield put(deleteFilesInFailureRequest(ids));
+    }
+
+    yield delay(3000);
+
+    callback();
+
+    toast.info(
+      'Oops..! Ocorreu um erro ao enviar seu cadastro, por favor tente novamente.'
+    );
+
     yield put(signUpFailure());
   }
 }
 
 export function signOut() {
   history.push('/');
+}
+
+export function* deleteAllFiles({ payload }) {
+  const { ids } = payload;
+
+  yield delay(1000);
+
+  const deleteFilesPromise = ids.map((id) =>
+    call(api.delete, `tempfiles/${id}`)
+  );
+
+  yield all(deleteFilesPromise);
+
+  yield put(deleteFilesInUnmountSuccess());
+}
+
+export function* forgot({ payload }) {
+  const { email } = payload;
+
+  yield call(api.post, 'password/forgot', { email });
+
+  toast.success(
+    'Enviamos um e-mail de verificação. Verifique sua caixa de entrada.'
+  );
+
+  yield put(forgotPasswordSuccess());
+
+  history.push('/login');
 }
 
 export function setToken({ payload }) {
@@ -78,4 +148,6 @@ export default all([
   takeLatest(SIGN_IN_REQUEST, signIn),
   takeLatest(SIGN_UP_REQUEST, signUp),
   takeLatest(SIGN_OUT, signOut),
+  takeLatest(SIGN_UP_FAILURE_DEL_FILES, deleteAllFiles),
+  takeLatest(FORGOT_PASSWORD_REQUEST, forgot),
 ]);

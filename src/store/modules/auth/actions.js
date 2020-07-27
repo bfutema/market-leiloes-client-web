@@ -6,6 +6,9 @@ import {
   SIGN_UP_FAILURE,
   SIGN_FAILURE,
   SIGN_OUT,
+  SIGN_UP_FAILURE_DEL_FILES,
+  FORGOT_PASSWORD_REQUEST,
+  FORGOT_PASSWORD_SUCCESS,
 } from './constants';
 
 export function signInRequest(email, password) {
@@ -50,5 +53,25 @@ export function signFailure() {
 export function signOut() {
   return {
     type: SIGN_OUT,
+  };
+}
+
+export function deleteFilesInFailureRequest(ids) {
+  return {
+    type: SIGN_UP_FAILURE_DEL_FILES,
+    payload: { ids },
+  };
+}
+
+export function forgotPasswordRequest(email) {
+  return {
+    type: FORGOT_PASSWORD_REQUEST,
+    payload: { email },
+  };
+}
+
+export function forgotPasswordSuccess() {
+  return {
+    type: FORGOT_PASSWORD_SUCCESS,
   };
 }

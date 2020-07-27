@@ -6,16 +6,39 @@ import * as Yup from 'yup';
 import { Form } from '@unform/web';
 import { signUpStepOne } from '~/store/modules/user/actions';
 
-import { onlyChars } from '~/utils';
+import { onlyChars, validate } from '~/utils';
 
 import { Input } from '~/components/Form';
 
 import { Title, Items, LeftItems, RightItems, Item, Actions } from '../styles';
 
+const usernameErrorMessage = 'Este username já está em uso!';
+const emailErrorMessage = 'Este e-mail já está em uso!';
+
 export default function StepOne({ handleNext }) {
   const dispatch = useDispatch();
 
   const formRef = useRef(null);
+
+  async function handleValidateUsername(e) {
+    const { id, value } = e.target;
+
+    formRef.current.setErrors({ username: '' });
+
+    await validate(id, value, usernameErrorMessage, () =>
+      formRef.current.setErrors({ username: usernameErrorMessage })
+    );
+  }
+
+  async function handleValidateEmail(e) {
+    const { id, value } = e.target;
+
+    formRef.current.setErrors({ email: '' });
+
+    await validate(id, value, emailErrorMessage, () =>
+      formRef.current.setErrors({ email: emailErrorMessage })
+    );
+  }
 
   async function handleSubmit(data) {
     try {
@@ -43,7 +66,21 @@ export default function StepOne({ handleNext }) {
 
       dispatch(signUpStepOne(username, email, password, confirmPassword));
 
-      handleNext();
+      const successUsername = await validate(
+        'username',
+        username,
+        usernameErrorMessage,
+        () => formRef.current.setErrors({ username: usernameErrorMessage })
+      );
+
+      const successEmail = await validate(
+        'email',
+        email,
+        emailErrorMessage,
+        () => formRef.current.setErrors({ email: emailErrorMessage })
+      );
+
+      if (successUsername && successEmail) handleNext();
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errorMessages = {};
@@ -73,6 +110,7 @@ export default function StepOne({ handleNext }) {
               placeholder="Nome de usuário"
               tabIndex="1"
               pattern={onlyChars}
+              onBlur={handleValidateUsername}
             />
           </Item>
           <Item>
@@ -97,6 +135,7 @@ export default function StepOne({ handleNext }) {
               placeholder="Digite seu e-mail"
               tabIndex="2"
               pattern={onlyChars}
+              onBlur={handleValidateEmail}
             />
           </Item>
           <Item>

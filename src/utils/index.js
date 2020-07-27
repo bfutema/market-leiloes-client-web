@@ -1,3 +1,7 @@
+import { toast } from 'react-toastify';
+
+import api from '~/services/api';
+
 export function onlyChars(value, cb) {
   const re = /^\S*$/;
 
@@ -21,4 +25,19 @@ export function cpfCnpj(value, cb) {
   }
 
   cb(value);
+}
+
+export async function validate(type, value, message, cb) {
+  if (value.length === 0) return;
+
+  const response = await api.post('validators', { type, value });
+
+  const { success } = response.data.message;
+
+  if (!success) {
+    toast.error(message);
+    cb();
+  }
+
+  return success;
 }

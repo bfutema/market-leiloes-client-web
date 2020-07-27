@@ -19,9 +19,14 @@ function SignUp() {
     setProgressBar(progressBar + 25);
   }
 
-  function handlePrev() {
-    setCurrentFs(currentStep - 1);
-    setProgressBar(progressBar - 25);
+  function handlePrev(step = undefined, progress = undefined) {
+    if (step && progress) {
+      setCurrentFs(currentStep - step);
+      setProgressBar(progressBar - progress);
+    } else {
+      setCurrentFs(currentStep - 1);
+      setProgressBar(progressBar - 25);
+    }
   }
 
   return (
@@ -69,7 +74,7 @@ function SignUp() {
         </fieldset>
         {currentStep === 4 && (
           <fieldset>
-            <StepFour />
+            <StepFour handlePrev={handlePrev} />
           </fieldset>
         )}
       </Content>

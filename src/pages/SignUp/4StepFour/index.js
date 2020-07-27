@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Success from '~/components/Success';
@@ -9,7 +10,7 @@ import { signUpRequest } from '~/store/modules/auth/actions';
 
 import { Title, Messages, Message } from '../styles';
 
-export default function StepFour() {
+export default function StepFour({ handlePrev }) {
   const dispatch = useDispatch();
 
   const newUser = useSelector((state) => state.user.newUser);
@@ -17,8 +18,8 @@ export default function StepFour() {
   const error = useSelector((state) => state.auth.error);
 
   useEffect(() => {
-    dispatch(signUpRequest(newUser));
-  }, [dispatch, newUser]);
+    dispatch(signUpRequest(newUser, handlePrev));
+  }, [dispatch, newUser, handlePrev]);
 
   return (
     <>
@@ -72,3 +73,7 @@ export default function StepFour() {
     </>
   );
 }
+
+StepFour.propTypes = {
+  handlePrev: PropTypes.func.isRequired,
+};
