@@ -9,6 +9,8 @@ import {
   SIGN_UP_FAILURE_DEL_FILES,
   FORGOT_PASSWORD_REQUEST,
   FORGOT_PASSWORD_SUCCESS,
+  RESET_PASSWORD_REQUEST,
+  RESET_PASSWORD_SUCCESS,
 } from './constants';
 
 export function signInRequest(email, password) {
@@ -73,5 +75,18 @@ export function forgotPasswordRequest(email) {
 export function forgotPasswordSuccess() {
   return {
     type: FORGOT_PASSWORD_SUCCESS,
+  };
+}
+
+export function resetPasswordRequest(token, password) {
+  return {
+    type: RESET_PASSWORD_REQUEST,
+    payload: { token, password },
+  };
+}
+
+export function resetPasswordSuccess() {
+  return {
+    type: RESET_PASSWORD_SUCCESS,
   };
 }

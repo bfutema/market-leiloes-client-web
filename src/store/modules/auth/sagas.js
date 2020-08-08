@@ -7,6 +7,7 @@ import {
   SIGN_OUT,
   SIGN_UP_FAILURE_DEL_FILES,
   FORGOT_PASSWORD_REQUEST,
+  RESET_PASSWORD_REQUEST,
 } from './constants';
 import {
   signInSuccess,
@@ -14,6 +15,7 @@ import {
   signUpFailure,
   deleteFilesInFailureRequest,
   forgotPasswordSuccess,
+  resetPasswordSuccess,
 } from './actions';
 import { deleteFilesInUnmountSuccess } from '../user/actions';
 
@@ -133,6 +135,18 @@ export function* forgot({ payload }) {
   history.push('/login');
 }
 
+export function* reset({ payload }) {
+  const { token, password } = payload;
+
+  yield call(api.post, 'password/reset', { password, token });
+
+  toast.success('Senha alterada com sucesso.');
+
+  yield put(resetPasswordSuccess());
+
+  history.push('/login');
+}
+
 export function setToken({ payload }) {
   if (!payload) return;
 
@@ -150,4 +164,5 @@ export default all([
   takeLatest(SIGN_OUT, signOut),
   takeLatest(SIGN_UP_FAILURE_DEL_FILES, deleteAllFiles),
   takeLatest(FORGOT_PASSWORD_REQUEST, forgot),
+  takeLatest(RESET_PASSWORD_REQUEST, reset),
 ]);
