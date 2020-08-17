@@ -1,4 +1,5 @@
 import {
+  SIGN_UP_NEW_CANDIDATE,
   SIGN_UP_STEP_ONE,
   SIGN_UP_STEP_TWO,
   SIGN_UP_STEP_THREE,
@@ -16,6 +17,13 @@ import {
   DELETE_FILES_IN_UNMOUNT_REQUEST,
   DELETE_FILES_IN_UNMOUNT_SUCCESS,
 } from './constants';
+
+export function newCandidate(accountType) {
+  return {
+    type: SIGN_UP_NEW_CANDIDATE,
+    payload: { accountType },
+  };
+}
 
 export function signUpStepOne(username, email, password, confirmPassword) {
   return {

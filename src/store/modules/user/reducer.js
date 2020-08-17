@@ -2,6 +2,7 @@ import produce from 'immer';
 
 import { SIGN_IN_SUCCESS, SIGN_OUT } from '../auth/constants';
 import {
+  SIGN_UP_NEW_CANDIDATE,
   SIGN_UP_STEP_ONE,
   SIGN_UP_STEP_TWO,
   UPLOAD_AVATAR_REQUEST,
@@ -24,6 +25,13 @@ const INITIAL_STATE = {
 export default function user(state = INITIAL_STATE, action) {
   return produce(state, (draft) => {
     switch (action.type) {
+      case SIGN_UP_NEW_CANDIDATE: {
+        draft.newUser = {
+          accountType: action.payload.accountType,
+        };
+        break;
+      }
+
       case SIGN_IN_SUCCESS: {
         draft.profile = action.payload.user;
         break;

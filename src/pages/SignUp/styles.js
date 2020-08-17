@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { darken, lighten } from 'polished';
 
 export const Container = styled.div`
   border: none;
@@ -31,6 +31,134 @@ export const Container = styled.div`
   hr {
     border: 0.5px solid var(--p-color);
     margin: 10px 0;
+  }
+`;
+
+export const NewCandidateContainer = styled.div`
+  width: 80%;
+  height: 100%;
+
+  margin: 80px auto 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const NewCandidate = styled.div`
+  display: grid;
+  grid-template-rows: 350px 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-areas:
+    'logo hero hero'
+    'buttons next next';
+  grid-row-gap: 120px;
+`;
+
+export const LogoContainer = styled.div`
+  grid-area: logo;
+
+  h3 {
+    margin-top: 60px;
+  }
+
+  p {
+    margin-top: 26px;
+  }
+
+  p:nth-of-type(2) {
+    color: ${(props) => darken(0.08, props.theme.colors.primary)};
+    font-size: 16px;
+    width: 100%;
+    max-width: 780px;
+    display: block;
+
+    span {
+      margin-top: 8px;
+      color: #777777;
+      display: block;
+      max-width: 100%;
+    }
+  }
+
+  img {
+    width: 580px;
+  }
+`;
+
+export const HeroContainer = styled.div`
+  grid-area: hero;
+`;
+
+export const ButtonsContainer = styled.div`
+  grid-area: buttons;
+  align-self: flex-end;
+
+  label {
+    color: #aaaaaa;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  button {
+    padding: 16px 32px;
+    color: #ffffff;
+    border-radius: 12px;
+
+    outline: none;
+
+    position: relative;
+
+    &:hover {
+      filter: brightness(90%);
+    }
+
+    &:nth-of-type(1) {
+      background-color: ${(props) =>
+        props.accountType === 'bidder'
+          ? darken(0.08, props.theme.colors.primary)
+          : lighten(0.08, props.theme.colors.secondary)};
+    }
+
+    &:nth-of-type(2) {
+      background-color: ${(props) =>
+        props.accountType === 'client'
+          ? darken(0.08, props.theme.colors.primary)
+          : lighten(0.08, props.theme.colors.secondary)};
+    }
+
+    & + button {
+      margin-left: 16px;
+    }
+  }
+`;
+
+export const NextButtonContainer = styled.div`
+  grid-area: next;
+  align-self: flex-end;
+  justify-self: end;
+
+  button {
+    padding: 16px 32px;
+    color: #ffffff;
+    border-radius: 12px;
+
+    outline: none;
+
+    position: relative;
+
+    &:hover {
+      filter: brightness(90%);
+    }
+
+    &:nth-of-type(1) {
+      background-color: ${(props) =>
+        lighten(0.08, props.theme.colors.secondary)};
+    }
+
+    svg {
+      margin-left: 16px;
+    }
   }
 `;
 

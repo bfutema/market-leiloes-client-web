@@ -1,3 +1,4 @@
+export const SIGN_UP_NEW_CANDIDATE = '@user/SIGN_UP_NEW_CANDIDATE';
 export const SIGN_UP_STEP_ONE = '@user/SIGN_UP_STEP_ONE';
 export const SIGN_UP_STEP_TWO = '@user/SIGN_UP_STEP_TWO';
 export const SIGN_UP_STEP_THREE = '@user/SIGN_UP_STEP_THREE';
