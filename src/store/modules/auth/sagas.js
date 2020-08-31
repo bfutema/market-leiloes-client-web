@@ -59,7 +59,7 @@ export function* signUp({ payload }) {
       birth,
       rg,
       gender,
-      accountType,
+      account_type,
     } = payload;
 
     yield delay(1000);
@@ -77,7 +77,7 @@ export function* signUp({ payload }) {
       gender,
       avatar_id: avatar && avatar.id,
       documents_ids,
-      accountType,
+      account_type,
     });
 
     toast.success('Cadastro enviado com sucesso.');

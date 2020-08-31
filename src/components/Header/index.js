@@ -1,8 +1,8 @@
-/* eslint-disable no-nested-ternary */
 import React from 'react';
+import Ink from 'react-ink';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { FiSearch, FiUser, FiLogOut } from 'react-icons/fi';
+import { FiSearch, FiUser, FiPackage, FiLogOut } from 'react-icons/fi';
 
 import { signOut } from '~/store/modules/auth/actions';
 
@@ -14,7 +14,10 @@ import {
   FormContent,
   LoginContent,
   User,
+  UserAvatar,
+  UserInfo,
   UserLoggedContent,
+  Actions,
 } from './styles';
 
 export default function Header() {
@@ -47,29 +50,49 @@ export default function Header() {
           {signed ? (
             <UserLoggedContent>
               <User>
-                <div>
-                  <FiUser size={20} color="var(--p-color)" />
-                </div>
-                <div>
+                <Actions>
+                  <li>
+                    <Link to={{ pathname: '/profile', state: 1 }}>
+                      <Ink />
+                      <FiUser size={16} color="#222222" />
+                      Meu perfil
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={{ pathname: '/products', state: 2 }}>
+                      <Ink />
+                      <FiPackage size={16} color="#222222" />
+                      Meus produtos
+                    </Link>
+                  </li>
+                  <li>
+                    <button type="button" onClick={handleSignOut}>
+                      <Ink />
+                      <FiLogOut size={16} color="#222222" />
+                      Sair
+                    </button>
+                  </li>
+                </Actions>
+                <UserAvatar hasProfile={profile !== undefined}>
+                  {profile ? (
+                    <img
+                      src={profile.avatar.url}
+                      alt={`Foto de ${profile.name}`}
+                    />
+                  ) : (
+                    <FiUser size={20} color="var(--p-color)" />
+                  )}
+                </UserAvatar>
+                <UserInfo>
                   <div>
                     <span>E-mail: </span>
                     <strong>{profile.email}</strong>
                   </div>
                   <div>
                     <span>Status: </span>
-                    <strong>
-                      {profile.status_id === 1
-                        ? 'Em Análise'
-                        : profile.status_id === 2
-                        ? 'Aprovado'
-                        : profile.status_id === 3
-                        ? 'Reprovado'
-                        : profile.status_id === 4
-                        ? 'Ativo'
-                        : 'Desativo'}
-                    </strong>
+                    <strong>{profile.status.description}</strong>
                   </div>
-                </div>
+                </UserInfo>
               </User>
               <button type="button" onClick={handleSignOut}>
                 <FiLogOut size={20} color="var(--p-color)" />

@@ -39,7 +39,7 @@ function SignUp() {
   const [progressBar, setProgressBar] = useState(25);
   const [currentStep, setCurrentFs] = useState(0);
 
-  const [accountType, setAccountType] = useState(undefined);
+  const [account_type, setAccountType] = useState(undefined);
 
   function handleNext() {
     setCurrentFs(currentStep + 1);
@@ -61,13 +61,13 @@ function SignUp() {
 
     setAccountType(value);
 
-    if (!accountType) {
+    if (!account_type) {
       toast.info('Por favor, selecione a sua pretenção.');
       return;
     }
 
     setCurrentFs(currentStep + 1);
-    dispatch(newCandidate(accountType));
+    dispatch(newCandidate(account_type));
   }
 
   return (
@@ -88,13 +88,13 @@ function SignUp() {
               <p>
                 Escolha abaixo sua pretenção com os nossos serviços para que
                 possamos oferecer uma melhor experiência possível.
-                {accountType === 'bidder' && (
+                {account_type === 'bidder' && (
                   <span>
                     Os arrematantes em nossa plataforma poderá visualizar todos
                     os produtos disponíveis para arremate.
                   </span>
                 )}
-                {accountType === 'client' && (
+                {account_type === 'client' && (
                   <span>
                     Ao escolher a prevenção de seus produtos será possível
                     gerenciar a prevenção à perda de seus produtos e em casos de
@@ -117,7 +117,7 @@ function SignUp() {
                 width={520}
               />
             </HeroContainer>
-            <ButtonsContainer accountType={accountType}>
+            <ButtonsContainer account_type={account_type}>
               <label>Escolha sua pretenção:</label>
               <div>
                 <button type="button" onClick={() => setAccountType('bidder')}>

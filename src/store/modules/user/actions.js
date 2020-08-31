@@ -18,10 +18,10 @@ import {
   DELETE_FILES_IN_UNMOUNT_SUCCESS,
 } from './constants';
 
-export function newCandidate(accountType) {
+export function newCandidate(account_type) {
   return {
     type: SIGN_UP_NEW_CANDIDATE,
-    payload: { accountType },
+    payload: { account_type },
   };
 }
 

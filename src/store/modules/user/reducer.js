@@ -27,7 +27,7 @@ export default function user(state = INITIAL_STATE, action) {
     switch (action.type) {
       case SIGN_UP_NEW_CANDIDATE: {
         draft.newUser = {
-          accountType: action.payload.accountType,
+          account_type: action.payload.account_type,
         };
         break;
       }
@@ -39,6 +39,7 @@ export default function user(state = INITIAL_STATE, action) {
 
       case SIGN_UP_STEP_ONE: {
         draft.newUser = {
+          ...draft.newUser,
           username: action.payload.username,
           email: action.payload.email,
           password: action.payload.password,

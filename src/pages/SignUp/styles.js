@@ -115,14 +115,14 @@ export const ButtonsContainer = styled.div`
 
     &:nth-of-type(1) {
       background-color: ${(props) =>
-        props.accountType === 'bidder'
+        props.account_type === 'bidder'
           ? darken(0.08, props.theme.colors.primary)
           : lighten(0.08, props.theme.colors.secondary)};
     }
 
     &:nth-of-type(2) {
       background-color: ${(props) =>
-        props.accountType === 'client'
+        props.account_type === 'client'
           ? darken(0.08, props.theme.colors.primary)
           : lighten(0.08, props.theme.colors.secondary)};
     }

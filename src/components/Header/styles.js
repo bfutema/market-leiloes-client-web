@@ -34,6 +34,14 @@ export const Content = styled.div`
       }
     }
   }
+
+  aside {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
 `;
 
 export const FormContent = styled.div`
@@ -99,49 +107,67 @@ export const User = styled.div`
   cursor: pointer;
 
   display: flex;
+  align-items: center;
   justify-content: flex-start;
 
-  > div:nth-of-type(1) {
-    width: 36px;
-    height: 36px;
+  position: relative;
+  height: 100%;
 
-    border: 1px solid #222;
-    border-radius: 50%;
+  &:hover ul {
+    top: 62px;
+    opacity: 1;
+    visibility: initial;
+  }
+`;
 
-    margin-right: 8px;
+export const UserAvatar = styled.div`
+  width: 36px;
+  height: 36px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  border: 1px solid ${(props) => (props.hasProfile ? '#aaa' : '#222')};
+  border-radius: 50%;
 
-    &:hover {
-      background-color: #f0f0f0cc;
-    }
+  margin-right: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #f0f0f0cc;
   }
 
-  > div:nth-of-type(2) {
-    white-space: nowrap;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+`;
 
-    margin-left: 8px;
+export const UserInfo = styled.div`
+  white-space: nowrap;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  margin-left: 8px;
 
-    span {
-      color: #777;
-      font-size: 12px;
-      font-weight: bold;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-    strong {
-      font-size: 14px;
-      font-weight: bold;
-    }
+  span {
+    color: #777;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  strong {
+    font-size: 14px;
+    font-weight: bold;
   }
 `;
 
 export const UserLoggedContent = styled.div`
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -154,5 +180,60 @@ export const UserLoggedContent = styled.div`
     &:hover svg {
       filter: brightness(60%);
     }
+  }
+`;
+
+export const Actions = styled.ul`
+  position: absolute;
+  top: 88px;
+  left: 0;
+
+  margin-top: 4px;
+  padding: 8px 0;
+
+  width: 168px;
+
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+
+  border-radius: 4px;
+  box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.6);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transition: all 200ms;
+
+  z-index: 1;
+
+  li a,
+  li button {
+    font-size: 16px;
+    color: #333;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    line-height: 48px;
+
+    padding: 0 16px;
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    position: relative;
+
+    svg {
+      margin-right: 8px;
+    }
+  }
+
+  li:hover a,
+  li:hover button {
+    background-color: #eee;
   }
 `;
