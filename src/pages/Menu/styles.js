@@ -37,7 +37,7 @@ export const PageWrapperContainer = styled.div`
   min-height: 70vh;
 
   margin-top: 16px;
-  padding: 8px 0;
+  padding: 16px;
 `;
 
 export const NavigationItem = styled.div`

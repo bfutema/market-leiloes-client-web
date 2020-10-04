@@ -2,7 +2,16 @@ import React from 'react';
 import Ink from 'react-ink';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { FiSearch, FiUser, FiPackage, FiLogOut } from 'react-icons/fi';
+import {
+  FiSearch,
+  FiUser,
+  FiSettings,
+  FiLock,
+  FiPackage,
+  FiCpu,
+  FiMonitor,
+  FiLogOut,
+} from 'react-icons/fi';
 
 import { signOut } from '~/store/modules/auth/actions';
 
@@ -59,10 +68,38 @@ export default function Header() {
                     </Link>
                   </li>
                   <li>
-                    <Link to={{ pathname: '/products', state: 2 }}>
+                    <Link to={{ pathname: '/account', state: 2 }}>
+                      <Ink />
+                      <FiSettings size={16} color="#222222" />
+                      Minha conta
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={{ pathname: '/password', state: 3 }}>
+                      <Ink />
+                      <FiLock size={16} color="#222222" />
+                      Dados de acesso
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={{ pathname: '/products', state: 4 }}>
                       <Ink />
                       <FiPackage size={16} color="#222222" />
                       Meus produtos
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={{ pathname: '/parametrizations', state: 5 }}>
+                      <Ink />
+                      <FiCpu size={16} color="#222222" />
+                      Parametrizações
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={{ pathname: '/sessions', state: 6 }}>
+                      <Ink />
+                      <FiMonitor size={16} color="#222222" />
+                      Sessões
                     </Link>
                   </li>
                   <li>

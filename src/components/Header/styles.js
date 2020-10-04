@@ -121,8 +121,8 @@ export const User = styled.div`
 `;
 
 export const UserAvatar = styled.div`
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
 
   border: 1px solid ${(props) => (props.hasProfile ? '#aaa' : '#222')};
   border-radius: 50%;
@@ -176,6 +176,7 @@ export const UserLoggedContent = styled.div`
     cursor: pointer;
 
     margin-left: 32px;
+    outline: none;
 
     &:hover svg {
       filter: brightness(60%);
@@ -191,7 +192,7 @@ export const Actions = styled.ul`
   margin-top: 4px;
   padding: 8px 0;
 
-  width: 168px;
+  width: 180px;
 
   display: flex;
   flex-direction: column;

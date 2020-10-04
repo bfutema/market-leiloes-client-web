@@ -4,16 +4,36 @@ import { toast } from 'react-toastify';
 import api from '~/services/api';
 
 import {
+  updateAvatarSuccess,
   deleteAvatarSuccess,
   deleteDocumentSuccess,
   deleteFilesInUnmountSuccess,
 } from './actions';
 
 import {
+  UPDATE_AVATAR_REQUEST,
   DELETE_AVATAR_REQUEST,
   DELETE_DOCUMENT_REQUEST,
   DELETE_FILES_IN_UNMOUNT_REQUEST,
 } from './constants';
+
+export function* updateAvatar({ payload }) {
+  try {
+    const { avatar } = payload;
+
+    const data = new FormData();
+
+    data.append('avatar', avatar);
+
+    const response = yield call(api.patch, '/users/avatar', data);
+
+    toast.success('Avatar atualizado com sucesso.');
+
+    yield put(updateAvatarSuccess(response.data));
+  } catch (err) {
+    toast.error('Oops! Ocorreu um erro ao atualizar o avatar.');
+  }
+}
 
 export function* deleteAvatar({ payload }) {
   try {
@@ -68,6 +88,7 @@ export function* deleteAllFiles({ payload }) {
 }
 
 export default all([
+  takeLatest(UPDATE_AVATAR_REQUEST, updateAvatar),
   takeLatest(DELETE_AVATAR_REQUEST, deleteAvatar),
   takeLatest(DELETE_DOCUMENT_REQUEST, deleteDocument),
   takeLatest(DELETE_FILES_IN_UNMOUNT_REQUEST, deleteAllFiles),

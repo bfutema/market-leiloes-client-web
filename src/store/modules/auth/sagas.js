@@ -1,5 +1,6 @@
 import { all, takeLatest, call, put, delay } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
+import { parseISO, format } from 'date-fns';
 
 import {
   SIGN_IN_REQUEST,
@@ -33,6 +34,8 @@ export function* signIn({ payload }) {
   const { token, user } = response.data;
 
   api.defaults.headers.Authorization = `Bearer ${token}`;
+
+  user.birth = format(parseISO(user.birth), 'yyyy-MM-dd');
 
   yield put(signInSuccess(token, user));
 

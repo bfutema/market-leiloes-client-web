@@ -16,6 +16,9 @@ import {
   DELETE_DOCUMENT_SUCCESS,
   DELETE_FILES_IN_UNMOUNT_REQUEST,
   DELETE_FILES_IN_UNMOUNT_SUCCESS,
+  UPDATE_AVATAR_REQUEST,
+  UPDATE_AVATAR_SUCCESS,
+  UPDATE_AVATAR_FAILURE,
 } from './constants';
 
 export function newCandidate(account_type) {
@@ -129,5 +132,25 @@ export function deleteFilesInUnmountRequest(ids) {
 export function deleteFilesInUnmountSuccess() {
   return {
     type: DELETE_FILES_IN_UNMOUNT_SUCCESS,
+  };
+}
+
+export function updateAvatarRequest(avatar) {
+  return {
+    type: UPDATE_AVATAR_REQUEST,
+    payload: { avatar },
+  };
+}
+
+export function updateAvatarSuccess(updatedAvatar) {
+  return {
+    type: UPDATE_AVATAR_SUCCESS,
+    payload: { updatedAvatar },
+  };
+}
+
+export function updateAvatarFailure() {
+  return {
+    type: UPDATE_AVATAR_FAILURE,
   };
 }

@@ -15,6 +15,7 @@ import {
   DOCUMENTS_UPDATE_PROGRESS,
   DELETE_DOCUMENT_SUCCESS,
   DELETE_FILES_IN_UNMOUNT_SUCCESS,
+  UPDATE_AVATAR_SUCCESS,
 } from './constants';
 
 const INITIAL_STATE = {
@@ -134,6 +135,11 @@ export default function user(state = INITIAL_STATE, action) {
       case DELETE_FILES_IN_UNMOUNT_SUCCESS: {
         draft.newUser.avatar = null;
         draft.newUser.documents = null;
+        break;
+      }
+
+      case UPDATE_AVATAR_SUCCESS: {
+        draft.profile.avatar = action.payload.updatedAvatar;
         break;
       }
 
