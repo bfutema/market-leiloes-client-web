@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fi';
 
 import Profile from './Profile';
+import Account from './Account';
 import Product from './Product';
 
 import {
@@ -91,6 +92,7 @@ export default function Menu() {
         </AsideContainer>
         <PageWrapperContainer>
           {page === 1 && <Profile />}
+          {page === 2 && <Account />}
           {page === 4 && <Product />}
         </PageWrapperContainer>
       </WrapperContainer>
