@@ -6,16 +6,6 @@ import Table from '~/components/Table';
 
 import { Container, PageTitle } from './styles';
 
-function createData(id, name, description, lot) {
-  return {
-    id,
-    name,
-    description,
-    // note,
-    lot,
-  };
-}
-
 const columns = [
   { id: 'id', numeric: false, disablePadding: true, label: 'Id' },
   { id: 'name', numeric: false, disablePadding: true, label: 'Produto' },
@@ -30,76 +20,83 @@ const columns = [
 ];
 
 const rows = [
-  createData(
-    1,
-    'Produto 1',
-    'Descrição do primeiro produto.',
-    // 'Observação do primeiro produto.',
-    'Lote 1'
-  ),
-  createData(
-    2,
-    'Produto 2',
-    'Descrição do segundo produto.',
-    // 'Observação do segundo produto.',
-    'Lote 2'
-  ),
-  createData(
-    3,
-    'Produto 3',
-    'Descrição do terceiro produto.',
-    // 'Observação do terceiro produto.',
-    'Lote 3'
-  ),
-  createData(
-    4,
-    'Produto 4',
-    'Descrição do quarto produto.',
-    // 'Observação do quarto produto.',
-    'Lote 4'
-  ),
-  createData(
-    5,
-    'Produto 5',
-    'Descrição do quinto produto.',
-    // 'Observação do quinto produto.',
-    'Lote 5'
-  ),
-  createData(
-    6,
-    'Produto 6',
-    'Descrição do sexto produto.',
-    // 'Observação do sexto produto.',
-    'Lote 6'
-  ),
-  createData(
-    7,
-    'Produto 7',
-    'Descrição do sétimo produto.',
-    // 'Observação do sétimo produto.',
-    'Lote 7'
-  ),
-  createData(
-    8,
-    'Produto 8',
-    'Descrição do oitavo produto.',
-    // 'Observação do oitavo produto.',
-    'Lote 8'
-  ),
-  createData(
-    9,
-    'Produto 9',
-    'Descrição do nono produto.',
-    // 'Observação do nono produto.',
-    'Lote 9'
-  ),
-  createData(
-    10,
-    'Produto 10',
-    'Descrição do décimo produto.',
-    // 'Observação do décimo produto.',
-    'Lote 10'
-  ),
+  {
+    id: 1,
+    name: 'Produto 1',
+    description: 'Descrição do primeiro produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 1',
+  },
+  {
+    id: 2,
+    name: 'Produto 2',
+    description: 'Descrição do segundo produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 2',
+  },
+  {
+    id: 3,
+    name: 'Produto 3',
+    description: 'Descrição do terceiro produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 3',
+  },
+  {
+    id: 4,
+    name: 'Produto 4',
+    description: 'Descrição do quarto produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 4',
+  },
+  {
+    id: 5,
+    name: 'Produto 5',
+    description: 'Descrição do quinto produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 5',
+  },
+  {
+    id: 6,
+    name: 'Produto 6',
+    description: 'Descrição do sexto produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 6',
+  },
+  {
+    id: 7,
+    name: 'Produto 7',
+    description: 'Descrição do sétimo produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 7',
+  },
+  {
+    id: 8,
+    name: 'Produto 8',
+    description: 'Descrição do oitavo produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 8',
+  },
+  {
+    id: 9,
+    name: 'Produto 9',
+    description: 'Descrição do nono produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 9',
+  },
+  {
+    id: 10,
+    name: 'Produto 10',
+    description: 'Descrição do décimo produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 10',
+  },
+  {
+    id: 11,
+    name: 'Produto 11',
+    description: 'Descrição do décimo primeiro produto.',
+    // note: 'Observação do primeiro produto.',
+    lot: 'Lote 11',
+  },
 ];
 
 export default function Products() {
@@ -111,7 +108,8 @@ export default function Products() {
           <span>Visualização do cadastro completo de seus produtos.</span>
         </div>
         <Button type="button">
-          <FiPlus size={20} color="#f0f0f0" />
+          <FiPlus size={16} color="#f0f0f0" />
+          Novo
         </Button>
       </PageTitle>
       <Table columns={columns} rows={rows} />

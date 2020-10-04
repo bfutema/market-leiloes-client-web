@@ -12,6 +12,7 @@ import {
 
 import Profile from './Profile';
 import Account from './Account';
+import ChangePassword from './ChangePassword';
 import Product from './Product';
 
 import {
@@ -93,6 +94,7 @@ export default function Menu() {
         <PageWrapperContainer>
           {page === 1 && <Profile />}
           {page === 2 && <Account />}
+          {page === 3 && <ChangePassword />}
           {page === 4 && <Product />}
         </PageWrapperContainer>
       </WrapperContainer>

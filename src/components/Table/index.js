@@ -123,7 +123,7 @@ export default function Table({ rows, columns }) {
           </MaterialTable>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 25, 50, 75, 100]}
           component="div"
           count={rows.length}
           rowsPerPage={rowsPerPage}
