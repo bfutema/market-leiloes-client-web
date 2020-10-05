@@ -7,6 +7,7 @@ import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
 import ForgotPassword from '~/pages/ForgotPassword';
 import ResetPassword from '~/pages/ResetPassword';
+import NewProduct from '~/pages/NewProduct';
 import Menu from '~/pages/Menu';
 
 export default function Routes() {
@@ -23,6 +24,8 @@ export default function Routes() {
       <Route path="/account" component={Menu} isPrivate />
       <Route path="/password" component={Menu} isPrivate />
       <Route path="/products" component={Menu} isPrivate />
+
+      <Route path="/new_product" component={NewProduct} isPrivate />
       {/* <Route path="/" component={() => <h1>404</h1>} /> */}
     </Switch>
   );

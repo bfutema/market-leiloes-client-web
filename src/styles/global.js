@@ -36,7 +36,7 @@ export default createGlobalStyle`
     background-color: var(--background-color);
   }
 
-  body, input, button {
+  body, input, textarea, button {
     font: 14px 'Nunito', 'Roboto', sans-serif;
   }
 

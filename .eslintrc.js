@@ -52,6 +52,8 @@ module.exports = {
     'radix': 'off',
     'react/forbid-prop-types': 'off',
     'consistent-return': 'off',
+    'jsx-a11y/no-noninteractive-element-interactions': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
   },
   settings: {
     'import/resolver': {

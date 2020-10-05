@@ -39,7 +39,7 @@ export function* signIn({ payload }) {
 
   yield put(signInSuccess(token, user));
 
-  history.push('/profile');
+  history.push('/profile', 1);
 }
 
 export function* signUp({ payload }) {

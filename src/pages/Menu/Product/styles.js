@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 export const Container = styled.div`
   width: 100%;
@@ -22,5 +23,23 @@ export const PageTitle = styled.div`
   span {
     color: ${(props) => props.theme.colors.text};
     font-size: 14px;
+  }
+
+  a {
+    background: ${(props) => props.theme.colors.purple};
+    color: ${(props) => props.theme.colors.white};
+    padding: 8px 16px;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background: ${shade(0.2, '#7159c1')};
+    }
+
+    svg {
+      margin-right: 4px;
+    }
   }
 `;

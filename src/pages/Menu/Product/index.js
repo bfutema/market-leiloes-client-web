@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FiPlus } from 'react-icons/fi';
 
-import { Button } from '~/components/Form';
 import Table from '~/components/Table';
 
 import { Container, PageTitle } from './styles';
@@ -107,10 +107,10 @@ export default function Products() {
           <h1>Produtos cadastrados</h1>
           <span>Visualização do cadastro completo de seus produtos.</span>
         </div>
-        <Button type="button">
+        <Link to="/new_product">
           <FiPlus size={16} color="#f0f0f0" />
           Novo
-        </Button>
+        </Link>
       </PageTitle>
       <Table columns={columns} rows={rows} />
     </Container>
